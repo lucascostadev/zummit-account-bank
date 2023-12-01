@@ -10,7 +10,7 @@ namespace Conversion.Domain.Interfaces
 
         Task<IList<TEntity>> Select();
 
-        Task<TEntity> Select(int id);
+        Task<TEntity?> Select(int id);
 
     }
 }

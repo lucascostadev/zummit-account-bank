@@ -21,14 +21,18 @@ namespace Conversion.Infrastructure.Data.Repository
 
         public async Task Update(TEntity obj)
         {
-            _databaseContext.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _databaseContext.Entry(obj).State = EntityState.Modified;
             await _databaseContext.SaveChangesAsync();
         }
 
         public async Task Delete(int id)
         {
-            _databaseContext.Set<TEntity>().Remove(await Select(id));
-            await _databaseContext.SaveChangesAsync();
+            var entity = await Select(id);
+            if (entity != null)
+            {
+                _databaseContext.Set<TEntity>().Remove(entity);
+                await _databaseContext.SaveChangesAsync();
+            }
         }
 
         public async Task<IList<TEntity>> Select() => await _databaseContext.Set<TEntity>().ToListAsync();
