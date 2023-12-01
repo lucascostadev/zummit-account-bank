@@ -1,13 +1,16 @@
 using Conversion.Domain.Entities;
 using Conversion.Domain.Interfaces;
-using Conversion.Services.Services;
+using Conversion.Infrastructure.Data;
 using Conversion.Infrastructure.Data.Repository;
+using Conversion.Services.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Add services to the container.   
+builder.Services.AddDbContext<DatabaseContext>(opt => opt.UseInMemoryDatabase("conversion-api"));
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
