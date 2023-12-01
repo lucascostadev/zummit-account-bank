@@ -6,3 +6,6 @@
 /Conversion.Api/.vs/Conversion.Api
 /Conversion.Api/obj
 /Conversion.Api/bin/Debug/net6.0
+/Conversion.Domain/obj
+/Conversion.Infrastructure/obj
+/Conversion.Services/obj
