@@ -9,3 +9,7 @@
 /Conversion.Domain/obj
 /Conversion.Infrastructure/obj
 /Conversion.Services/obj
+/Conversion.Api/bin/Debug/net8.0
+/Conversion.Domain/bin/Debug/net8.0
+/Conversion.Infrastructure/bin/Debug/net8.0
+/Conversion.Services/bin/Debug/net8.0
