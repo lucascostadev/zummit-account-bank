@@ -54,7 +54,7 @@ namespace Conversion.Services.Services
 
         public async Task<decimal> Convert(string currencyTo, string currencyFrom, decimal value)
         {
-            var cacheEntry = _cache.GetOrCreate($"{currencyTo}-{currencyFrom}", entry =>
+            var cacheEntry = _cache.GetOrCreate($"{currencyTo}-{currencyFrom}-{value}", entry =>
             {
                 entry.AbsoluteExpirationRelativeToNow = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1) - DateTime.Now;
                 entry.SetPriority(CacheItemPriority.High);
