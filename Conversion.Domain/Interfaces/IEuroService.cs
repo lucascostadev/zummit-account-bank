@@ -7,5 +7,7 @@ namespace Conversion.Domain.Interfaces
         Task SyncWithEuroXref();
 
         Task<Euro?> GetWithCurrency(string currency);
+
+        Task<decimal> Convert(string currencyTo, string currencyFrom, decimal value);
     }
 }

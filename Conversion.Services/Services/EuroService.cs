@@ -35,5 +35,22 @@ namespace Conversion.Services.Services
 
         public async Task<Euro?> GetWithCurrency(string currency) => await _euroRepository.GetByCurrency(currency);
 
+        public async Task<decimal> Convert(string currencyTo, string currencyFrom, decimal value)
+        {
+            var to = currencyTo == "EURO" ? 1m : (decimal)(await GetWithCurrency(currencyTo))?.Value;
+            var from = (currencyFrom == "EURO" ? 1m : (decimal)(await GetWithCurrency(currencyFrom))?.Value);
+
+            if (currencyTo == "EURO")
+            {
+                return value * from;
+            }
+
+            if (currencyFrom == "EURO")
+            {
+                return value / to;
+            }
+
+            return (value / to) * from;
+        }
     }
 }

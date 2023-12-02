@@ -1,5 +1,5 @@
 using Conversion.Api.ViewModels.Convert;
-using Conversion.Services.Validators;
+using Conversion.Domain.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +10,12 @@ namespace Conversion.Api.Controllers
     public class ConvertController : ControllerBase
     {
         private readonly IValidator<ConvertRequest> _validator;
+        private readonly IEuroService _euroService;
 
-        public ConvertController(IValidator<ConvertRequest> validator)
+        public ConvertController(IValidator<ConvertRequest> validator, IEuroService euroService)
         {
             _validator = validator;
+            _euroService = euroService;
         }
 
         [HttpPost(Name = "Convert")]
@@ -23,7 +25,7 @@ namespace Conversion.Api.Controllers
 
             if (validationResult.IsValid)
             {
-                return new ConvertResponse();
+                return new ConvertResponse(model.From, await _euroService.Convert(model.To, model.From, model.Value));
             }
 
             return new ConvertResponse(validationResult.Errors);

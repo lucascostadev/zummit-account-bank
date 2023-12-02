@@ -1,7 +1,6 @@
 ﻿using Conversion.Api.ViewModels.Convert;
 using Conversion.Domain.Interfaces;
 using FluentValidation;
-using Microsoft.AspNetCore.Identity;
 
 namespace Conversion.Services.Validators
 {
@@ -11,18 +10,22 @@ namespace Conversion.Services.Validators
         {
             RuleFor(c => c.To).NotEmpty().NotNull().Custom((x, context) =>
             {
-                if (euroService.GetWithCurrency(x).Result == null)
+#pragma warning disable CS8604 // Possible null reference argument.
+                if (x != "EURO" && euroService.GetWithCurrency(x).Result == null)
                 {
-                    context.AddFailure("", $"We can´t find {x}.");
+                    context.AddFailure("", $"'To' not found {x}.");
                 }
+#pragma warning restore CS8604 // Possible null reference argument.
             });
 
             RuleFor(c => c.From).NotEmpty().NotNull().Custom((x, context) =>
             {
-                if (euroService.GetWithCurrency(x).Result == null)
+#pragma warning disable CS8604 // Possible null reference argument.
+                if (x != "EURO" && euroService.GetWithCurrency(x).Result == null)
                 {
-                    context.AddFailure("", $"We can´t find {x}.");
+                    context.AddFailure("", $"'From' not found {x}.");
                 }
+#pragma warning restore CS8604 // Possible null reference argument.
             });
 
             RuleFor(c => c.Value).NotEmpty().NotNull().GreaterThan(0);

@@ -13,5 +13,7 @@ namespace Conversion.Domain.ViewModels
         }
 
         public List<string> Errors { get; set; } = new List<string>();
+
+        public bool IsFailed { get {  return Errors.Count > 0; } }
     }
 }
