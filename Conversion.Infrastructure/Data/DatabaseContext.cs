@@ -11,10 +11,5 @@ namespace Conversion.Infrastructure.Data
         }
 
         public DbSet<Euro> Euro { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }

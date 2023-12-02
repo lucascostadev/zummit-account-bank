@@ -8,6 +8,7 @@ using Conversion.Services.Services;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+await using var dbContext = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+await dbContext.Database.MigrateAsync();
 
 BackgroundJob.Enqueue<EuroXrefDailyJob>(x => x.Sync());
 RecurringJob.AddOrUpdate<EuroXrefDailyJob>("sync", x => x.Sync(), Cron.Daily);
