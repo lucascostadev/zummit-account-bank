@@ -39,7 +39,18 @@ namespace Conversion.Services.Services
 
         public async Task AddRange(IEnumerable<Euro> entities) => await _euroRepository.InsertRange(entities);
 
-        public async Task<Euro?> GetWithCurrency(string currency) => await _euroRepository.GetByCurrency(currency);
+        public async Task<Euro?> GetWithCurrency(string currency)
+        {
+            var cacheEntry = _cache.GetOrCreateAsync($"{currency}", entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1) - DateTime.Now;
+                entry.SetPriority(CacheItemPriority.High);
+
+                return _euroRepository.GetByCurrency(currency);
+            });
+
+            return (await cacheEntry);
+        }
 
         public async Task<decimal> Convert(string currencyTo, string currencyFrom, decimal value)
         {
