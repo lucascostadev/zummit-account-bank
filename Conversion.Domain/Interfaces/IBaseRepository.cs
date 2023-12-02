@@ -6,6 +6,8 @@ namespace Conversion.Domain.Interfaces
     {
         Task Insert(TEntity obj);
 
+        Task InsertRange(IEnumerable<TEntity> list);
+
         Task Update(TEntity obj);
 
         Task Delete(int id);

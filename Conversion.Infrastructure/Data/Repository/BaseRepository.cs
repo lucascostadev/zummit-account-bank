@@ -35,9 +35,14 @@ namespace Conversion.Infrastructure.Data.Repository
             }
         }
 
-        public async Task<IList<TEntity>> Select() => await _databaseContext.Set<TEntity>().ToListAsync();
+        public async Task<IList<TEntity>> Select() => await _databaseContext.Set<TEntity>().AsNoTracking().ToListAsync();
 
-        public async Task<TEntity?> Select(int id) => await _databaseContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<TEntity?> Select(int id) => await _databaseContext.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 
+        public async Task InsertRange(IEnumerable<TEntity> list)
+        {
+            await _databaseContext.Set<TEntity>().AddRangeAsync(list);
+            await _databaseContext.SaveChangesAsync();
+        }
     }
 }

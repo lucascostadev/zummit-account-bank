@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Conversion.Domain\Conversion.Domain.csproj" />
+    <ProjectReference Include="..\Conversion.Infrastructure\Conversion.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
