@@ -1,20 +1,17 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+You have been asked to develop a service to automatically convert values between currencies. The
+application calling this service requires two modes of operation:
+1. On-demand, between a specific pair of currencies. For example, from USD to NZD; and
+2. In bulk, for all stale calculations in the system.
+For on-demand requests, it is expected that most calls take less than a millisecond. For bulk calculations,
+the system will need to potentially update millions of records once a day and should be able to do so in
+minutes. The primary bottleneck for bulk operations is expected to be database update speed.
+You are free to use any external exchange rate API, but the public feed produced by the European Central
+Bank is recommended and can be read from here: https://www.ecb.europa.eu/stats/eurofxref/eurofxrefdaily.xml 
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
-
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
-
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+1. How we need to run ?
+	Before run, we need to configure ConnectionString into `appsettings.json`
+2. How run project ?
+	Go to root folder and run `dotnet run`
+3. In root folder we have a postman collection for tests.
