@@ -30,6 +30,8 @@ builder.Services.AddScoped<IEuroRepository, EuroRepository>();
 builder.Services.AddScoped<IEuroService, EuroService>();
 builder.Services.AddScoped<EuroXrefDailyService>();
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddValidatorsFromAssemblyContaining<EuroValidator>();
 
 builder.Services.AddHangfire(configuration =>

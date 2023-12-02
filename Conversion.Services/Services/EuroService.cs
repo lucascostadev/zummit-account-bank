@@ -2,6 +2,7 @@
 using Conversion.Domain.Interfaces;
 using Conversion.Infrastructure.CrossCutting;
 using Conversion.Infrastructure.Data.Repository;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Conversion.Services.Services
 {
@@ -9,11 +10,16 @@ namespace Conversion.Services.Services
     {
         private readonly EuroXrefDailyService _euroXrefDailyService;
         private readonly IEuroRepository _euroRepository;
+        private readonly IMemoryCache _cache;
 
-        public EuroService(IBaseRepository<Euro> baseRepository, IEuroRepository euroRepository, EuroXrefDailyService euroXrefDailyService) : base(baseRepository)
+        public EuroService(IBaseRepository<Euro> baseRepository,
+                           IEuroRepository euroRepository,
+                           EuroXrefDailyService euroXrefDailyService,
+                           IMemoryCache cache) : base(baseRepository)
         {
             _euroXrefDailyService = euroXrefDailyService;
             _euroRepository = euroRepository;
+            _cache = cache;
         }
 
         //public async Euro? GetByCurrency(string currency) => await _baseRepository.List
@@ -36,6 +42,19 @@ namespace Conversion.Services.Services
         public async Task<Euro?> GetWithCurrency(string currency) => await _euroRepository.GetByCurrency(currency);
 
         public async Task<decimal> Convert(string currencyTo, string currencyFrom, decimal value)
+        {
+            var cacheEntry = _cache.GetOrCreate($"{currencyTo}-{currencyFrom}", entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = DateTime.Now.Date.AddDays(1).AddMilliseconds(-1) - DateTime.Now;
+                entry.SetPriority(CacheItemPriority.High);
+
+                return ConvertL(currencyTo, currencyFrom, value);
+            });
+
+            return (await cacheEntry);
+        }
+
+        public async Task<decimal> ConvertL(string currencyTo, string currencyFrom, decimal value)
         {
             var to = currencyTo == "EURO" ? 1m : (decimal)(await GetWithCurrency(currencyTo))?.Value;
             var from = (currencyFrom == "EURO" ? 1m : (decimal)(await GetWithCurrency(currencyFrom))?.Value);
