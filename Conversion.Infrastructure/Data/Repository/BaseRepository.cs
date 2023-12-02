@@ -13,6 +13,8 @@ namespace Conversion.Infrastructure.Data.Repository
             _databaseContext = databaseContext;
         }
 
+        public async Task<IEnumerable<TEntity>> List() => await _databaseContext.Set<TEntity>().AsNoTracking().ToListAsync();
+
         public async Task Insert(TEntity obj)
         {
             await _databaseContext.Set<TEntity>().AddAsync(obj);

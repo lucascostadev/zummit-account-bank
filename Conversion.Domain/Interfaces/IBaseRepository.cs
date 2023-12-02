@@ -15,5 +15,7 @@ namespace Conversion.Domain.Interfaces
         Task<IList<TEntity>> Select();
 
         Task<TEntity?> Select(int id);
+
+        Task<IEnumerable<TEntity>> List();
     }
 }

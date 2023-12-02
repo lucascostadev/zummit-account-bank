@@ -1,3 +1,4 @@
+using Conversion.Api.ViewModels.Convert;
 using Conversion.Domain.Entities;
 using Conversion.Domain.Interfaces;
 using Conversion.Infrastructure.CrossCutting;
@@ -5,8 +6,11 @@ using Conversion.Infrastructure.Data;
 using Conversion.Infrastructure.Data.Repository;
 using Conversion.Infrastructure.Hangfire;
 using Conversion.Services.Services;
+using Conversion.Services.Validators;
+using FluentValidation;
 using Hangfire;
 using Hangfire.SqlServer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -22,8 +26,11 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IBaseRepository<Euro>, BaseRepository<Euro>>();
+builder.Services.AddScoped<IEuroRepository, EuroRepository>();
 builder.Services.AddScoped<IEuroService, EuroService>();
 builder.Services.AddScoped<EuroXrefDailyService>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<EuroValidator>();
 
 builder.Services.AddHangfire(configuration =>
 {

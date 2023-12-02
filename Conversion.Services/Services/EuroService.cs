@@ -8,13 +8,15 @@ namespace Conversion.Services.Services
     public class EuroService : BaseService<Euro>, IEuroService
     {
         private readonly EuroXrefDailyService _euroXrefDailyService;
-        private readonly IBaseRepository<Euro> _baseRepository;
+        private readonly IEuroRepository _euroRepository;
 
-        public EuroService(IBaseRepository<Euro> baseRepository, EuroXrefDailyService euroXrefDailyService) : base(baseRepository)
+        public EuroService(IBaseRepository<Euro> baseRepository, IEuroRepository euroRepository, EuroXrefDailyService euroXrefDailyService) : base(baseRepository)
         {
             _euroXrefDailyService = euroXrefDailyService;
-            _baseRepository = baseRepository;
+            _euroRepository = euroRepository;
         }
+
+        //public async Euro? GetByCurrency(string currency) => await _baseRepository.List
 
         public async Task SyncWithEuroXref()
         {
@@ -29,6 +31,9 @@ namespace Conversion.Services.Services
             }
         }
 
-        public async Task AddRange(IEnumerable<Euro> entities) => await _baseRepository.InsertRange(entities);
+        public async Task AddRange(IEnumerable<Euro> entities) => await _euroRepository.InsertRange(entities);
+
+        public async Task<Euro?> GetWithCurrency(string currency) => await _euroRepository.GetByCurrency(currency);
+
     }
 }
