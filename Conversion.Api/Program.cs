@@ -9,13 +9,17 @@ using Balance.Services.Services;
 using Balance.Services.Validators;
 using Bank.Api;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.   
 builder.Services.AddDbContext<DatabaseContext>(p => p.UseInMemoryDatabase("account-bank"));
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -32,7 +36,6 @@ builder.Services.AddScoped<IAccountBankService, AccountBankService>();
 builder.Services.AddScoped<IAccountBankRepository, AccountBankRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
-
 
 builder.Services.AddMemoryCache();
 

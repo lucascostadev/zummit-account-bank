@@ -16,6 +16,11 @@ namespace Balance.Domain.Entities
 
         public decimal Balance { get; set; }
 
+        public bool CanWithdraw(decimal withdrawValue)
+        {
+            return Balance - withdrawValue >= 0;
+        }
+
         public string RetornaDataAberturaFormatada()
         {
             if (!CreatedAt.HasValue)
