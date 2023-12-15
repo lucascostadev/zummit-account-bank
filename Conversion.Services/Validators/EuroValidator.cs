@@ -9,6 +9,7 @@ namespace Balance.Services.Validators
         {
             RuleFor(c => c.Currency).NotEmpty().NotNull();
             RuleFor(c => c.Value).NotEmpty().NotNull();
+
         }
     }
 }

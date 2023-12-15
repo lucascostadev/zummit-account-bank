@@ -11,7 +11,9 @@ Bank is recommended and can be read from here: https://www.ecb.europa.eu/stats/e
 
 # Getting Started
 1. How we need to run ?
-	Before run, we need to configure ConnectionString into `appsettings.json`
+	Only .NET framework
 2. How run project ?
 	Go to root folder and run `dotnet run`
 3. In root folder we have a postman collection for tests.
+4. How we view all de endpoints ?
+	Go to `https://localhost:7057/swagger/index.html`

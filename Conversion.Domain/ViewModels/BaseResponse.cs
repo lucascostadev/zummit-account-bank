@@ -12,8 +12,10 @@ namespace Balance.Domain.ViewModels
             Errors = errors.Select(x => x.ErrorMessage).ToList();
         }
 
-        public List<string> Errors { get; set; } = new List<string>();
+        public List<string> Errors { get; set; }
 
-        public bool IsFailed { get {  return Errors.Count > 0; } }
+        public bool IsFailed { get {  return Errors != null && Errors.Count > 0; } }
+
+        public string CreatedAt { get; set; }
     }
 }
