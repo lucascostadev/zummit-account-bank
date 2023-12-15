@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Conversion.Infrastructure.Migrations
+namespace Balance.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class AddColumnCreatedAtIntoEuro : Migration

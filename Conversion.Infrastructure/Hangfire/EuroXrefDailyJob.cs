@@ -1,7 +1,7 @@
-﻿using Conversion.Domain.Interfaces;
-using Conversion.Infrastructure.CrossCutting;
+﻿using Balance.Domain.Interfaces;
+using Balance.Infrastructure.CrossCutting;
 
-namespace Conversion.Infrastructure.Hangfire
+namespace Balance.Infrastructure.Hangfire
 {
     public class EuroXrefDailyJob
     {

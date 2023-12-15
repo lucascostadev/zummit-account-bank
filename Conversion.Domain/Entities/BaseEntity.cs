@@ -1,4 +1,4 @@
-﻿namespace Conversion.Domain.Entities
+﻿namespace Balance.Domain.Entities
 {
     public abstract class BaseEntity
     {

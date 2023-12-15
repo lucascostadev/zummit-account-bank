@@ -1,10 +1,10 @@
-﻿using Conversion.Domain.Entities;
-using Conversion.Domain.Interfaces;
-using Conversion.Infrastructure.CrossCutting;
-using Conversion.Infrastructure.Data.Repository;
+﻿using Balance.Domain.Entities;
+using Balance.Domain.Interfaces;
+using Balance.Infrastructure.CrossCutting;
+using Balance.Infrastructure.Data.Repository;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace Conversion.Services.Services
+namespace Balance.Services.Services
 {
     public class EuroService : BaseService<Euro>, IEuroService
     {

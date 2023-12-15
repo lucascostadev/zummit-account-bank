@@ -1,8 +1,8 @@
-﻿using Conversion.Api.ViewModels.Convert;
-using Conversion.Domain.Interfaces;
+﻿using Balance.Api.ViewModels.Convert;
+using Balance.Domain.Interfaces;
 using FluentValidation;
 
-namespace Conversion.Services.Validators
+namespace Balance.Services.Validators
 {
     public class ConvertRequestValidator : AbstractValidator<ConvertRequest>
     {

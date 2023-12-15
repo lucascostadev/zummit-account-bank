@@ -1,4 +1,4 @@
-﻿namespace Conversion.Api.ViewModels.Convert
+﻿namespace Balance.Api.ViewModels.Convert
 {
     public class ConvertRequest
     {

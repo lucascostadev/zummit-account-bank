@@ -1,9 +1,9 @@
-﻿using Conversion.Domain.Entities;
-using Conversion.Domain.Interfaces;
+﻿using Balance.Domain.Entities;
+using Balance.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
 
-namespace Conversion.Infrastructure.Data.Repository
+namespace Balance.Infrastructure.Data.Repository
 {
     public class EuroRepository : BaseRepository<Euro>, IEuroRepository
     {

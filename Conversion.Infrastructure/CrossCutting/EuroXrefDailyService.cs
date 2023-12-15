@@ -1,8 +1,8 @@
-﻿using Conversion.Infrastructure.CrossCutting.Model;
+﻿using Balance.Infrastructure.CrossCutting.Model;
 using Microsoft.AspNetCore.Http;
 using System.Xml.Serialization;
 
-namespace Conversion.Infrastructure.CrossCutting
+namespace Balance.Infrastructure.CrossCutting
 {
     public class EuroXrefDailyService
     {

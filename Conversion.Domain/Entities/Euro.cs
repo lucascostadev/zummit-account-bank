@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Conversion.Domain.Entities
+namespace Balance.Domain.Entities
 {
     public class Euro : BaseEntity
     {

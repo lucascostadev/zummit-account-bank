@@ -1,7 +1,7 @@
-﻿using Conversion.Domain.ViewModels;
+﻿using Balance.Domain.ViewModels;
 using FluentValidation.Results;
 
-namespace Conversion.Api.ViewModels.Convert
+namespace Balance.Api.ViewModels.Convert
 {
     public class ConvertResponse : BaseResponse
     {

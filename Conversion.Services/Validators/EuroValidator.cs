@@ -1,7 +1,7 @@
-﻿using Conversion.Domain.Entities;
+﻿using Balance.Domain.Entities;
 using FluentValidation;
 
-namespace Conversion.Services.Validators
+namespace Balance.Services.Validators
 {
     public class EuroValidator : AbstractValidator<Euro>
     {

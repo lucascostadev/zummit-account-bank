@@ -1,6 +1,6 @@
-﻿using Conversion.Domain.Entities;
+﻿using Balance.Domain.Entities;
 
-namespace Conversion.Domain.Interfaces
+namespace Balance.Domain.Interfaces
 {
     public interface IEuroService : IBaseService<Euro>
     {

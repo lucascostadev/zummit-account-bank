@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using System.ComponentModel.DataAnnotations;
 
-namespace Conversion.Domain.ViewModels
+namespace Balance.Domain.ViewModels
 {
     public class BaseResponse
     {

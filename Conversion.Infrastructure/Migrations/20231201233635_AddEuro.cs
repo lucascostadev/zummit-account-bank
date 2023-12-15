@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Conversion.Infrastructure.Migrations
+namespace Balance.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class AddEuro : Migration

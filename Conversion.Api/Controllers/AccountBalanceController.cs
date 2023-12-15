@@ -1,18 +1,18 @@
-using Conversion.Api.ViewModels.Convert;
-using Conversion.Domain.Interfaces;
+using Balance.Api.ViewModels.Convert;
+using Balance.Domain.Interfaces;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Conversion.Api.Controllers
+namespace Balance.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ConvertController : ControllerBase
+    public class AccountBalanceController : ControllerBase
     {
         private readonly IValidator<ConvertRequest> _validator;
         private readonly IEuroService _euroService;
 
-        public ConvertController(IValidator<ConvertRequest> validator, IEuroService euroService)
+        public AccountBalanceController(IValidator<ConvertRequest> validator, IEuroService euroService)
         {
             _validator = validator;
             _euroService = euroService;

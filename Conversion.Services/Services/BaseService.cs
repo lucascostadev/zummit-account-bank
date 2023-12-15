@@ -1,8 +1,8 @@
-﻿using Conversion.Domain.Entities;
-using Conversion.Domain.Interfaces;
+﻿using Balance.Domain.Entities;
+using Balance.Domain.Interfaces;
 using FluentValidation;
 
-namespace Conversion.Services.Services
+namespace Balance.Services.Services
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : BaseEntity
     {

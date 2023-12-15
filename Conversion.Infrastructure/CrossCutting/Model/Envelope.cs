@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace Conversion.Infrastructure.CrossCutting.Model
+namespace Balance.Infrastructure.CrossCutting.Model
 {
     [XmlRoot(ElementName = "Envelope", Namespace = "http://www.gesmes.org/xml/2002-08-01")]
     public class Envelope

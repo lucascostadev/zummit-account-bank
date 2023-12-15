@@ -1,8 +1,8 @@
-﻿using Conversion.Domain.Entities;
-using Conversion.Domain.Interfaces;
+﻿using Balance.Domain.Entities;
+using Balance.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Conversion.Infrastructure.Data.Repository
+namespace Balance.Infrastructure.Data.Repository
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
     {

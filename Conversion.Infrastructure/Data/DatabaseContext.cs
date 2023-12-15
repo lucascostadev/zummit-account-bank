@@ -1,7 +1,7 @@
-﻿using Conversion.Domain.Entities;
+﻿using Balance.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Conversion.Infrastructure.Data
+namespace Balance.Infrastructure.Data
 {
     public class DatabaseContext : DbContext
     {
